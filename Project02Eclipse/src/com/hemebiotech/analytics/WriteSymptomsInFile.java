@@ -11,7 +11,7 @@ public class WriteSymptomsInFile implements ISymptomWriter {
 	@Override
 	public void symptomsWriter(Map<String, Integer> symptoms, List<String> listeSymptoms)  {
 		// TODO Auto-generated method stub
-		FileWriter writer;
+		FileWriter writer = null;
 		try {
 			writer = new FileWriter ("result.out");
 	
@@ -24,7 +24,15 @@ public class WriteSymptomsInFile implements ISymptomWriter {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
+		finally {
+			try {
+				if (writer != null)
+				writer.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 	
 
